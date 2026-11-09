@@ -8,7 +8,7 @@
   var A = window.CCAPI, C = window.CC || {}, esc = A.esc;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  var MARK = "mark.svg";
+  var MARK = "favicon.svg";
   var TBC = '<span class="tbc">To be confirmed</span>';
   var STOCK = { in_stock: "In stock", low_stock: "Low stock", special_order: "Special order", unavailable: "Unavailable" };
   var STATUS = { available: "Available", reserved: "Reserved", sold: "Sold" };
@@ -41,10 +41,15 @@
         if (s.address_confirmed) addr += '<br><a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.address_line + ", " + s.city_state_zip) + '" target="_blank" rel="noopener">Open in Google Maps</a>';
         else addr += '<br><span class="small muted">Please call or email before visiting.</span>';
         el.innerHTML = addr;
+      } else if (k === "address-line") {
+        el.textContent = [s.address_line, s.city_state_zip].filter(Boolean).join(", ");
       } else if (k === "youtube") {
         el.innerHTML = s.youtube_channel_url ? '<a href="' + esc(s.youtube_channel_url) + '" target="_blank" rel="noopener">YouTube channel</a>' : TBC;
       } else el.innerHTML = s[k] ? A.multiline(s[k]) : TBC;
     });
+    $$("[data-sms-link]").forEach(function (a) { a.href = "sms:" + String(s.phone || "").replace(/[^\d+]/g, ""); });
+    $$("[data-visit-note]").forEach(function (el) { el.hidden = !!s.address_confirmed; });
+    cardActions(s);
     $$("[data-channel-btn]").forEach(function (a) { if (/^https:\/\/(www\.)?youtube\.com\//.test(s.youtube_channel_url || "")) { a.href = s.youtube_channel_url; a.hidden = false; } });
     $$("[data-policy]").forEach(function (el) {
       var t = s["policy_" + el.getAttribute("data-policy")];
@@ -271,5 +276,37 @@
         .catch(function (err) { show("error", esc(err.message)); })
         .then(function () { btn.disabled = false; btn.textContent = "Send message"; });
     });
+  }
+
+  /* ---------- digital business card: save contact + share ---------- */
+  function cardActions(s) {
+    var save = $("[data-save-contact]"), share = $("[data-share-card]"), st = $("[data-card-status]");
+    var say = function (m) { if (st) { st.textContent = m; setTimeout(function () { if (st.textContent === m) st.textContent = ""; }, 5000); } };
+    var v = function (x) { return String(x || "").replace(/\\/g, "\\\\").replace(/[,;]/g, function (c) { return "\\" + c; }).replace(/\r?\n/g, "\\n"); };
+    if (save && !save._wired) {
+      save._wired = true;
+      save.addEventListener("click", function () {
+        var csz = String(s.city_state_zip || ""), m = csz.match(/^(.*?),?\s+([A-Z]{2}),?\s+(\d{5})/) || [];
+        var lines = ["BEGIN:VCARD", "VERSION:3.0", "N:Parks;Charles;;;", "FN:Charles Parks", "ORG:" + v(s.business_name || "Charlie’s Chairs"),
+          "TITLE:Upholstery / Fabric Sales", "TEL;TYPE=WORK,VOICE:" + v(s.phone), "EMAIL;TYPE=WORK:" + v(s.email)];
+        if (s.address_line) lines.push("ADR;TYPE=WORK:;;" + v(s.address_line) + ";" + v(m[1] || csz) + ";" + v(m[2] || "") + ";" + v(m[3] || "") + ";USA");
+        lines.push("URL:" + location.href.split(/[?#]/)[0].replace(/index\.html$/, ""), "END:VCARD");
+        var blob = new Blob([lines.join("\r\n") + "\r\n"], { type: "text/vcard" });
+        var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "Charlies-Chairs.vcf";
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+        say("Contact card downloaded. Open it to add Charles to your contacts.");
+      });
+    }
+    if (share && !share._wired) {
+      share._wired = true;
+      share.addEventListener("click", function () {
+        var url = location.href.split(/[?#]/)[0];
+        var data = { title: "Charlie’s Chairs", text: "Charlie’s Chairs: upholstery and fabric sales by Charles Parks. " + (s.phone || ""), url: url };
+        if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { say("Link copied. Paste it in a text or email."); }, function () { say("Copy this link: " + url); });
+        else say("Copy this link: " + url);
+      });
+    }
   }
 })();

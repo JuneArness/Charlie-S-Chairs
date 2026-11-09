@@ -8,7 +8,7 @@ Website by SAP Development Solutions, LLC.
 
 | Area | Status |
 | --- | --- |
-| Brand: chair-and-brass-tack mark, black/espresso/gold with cream reading sections, link preview image, icons | Built |
+| Brand: Charles’s business card. The home page opens on a live “digital business card” (wordmark, Upholstery/Fabric Sales · Brasstack, tap-to-call/text/email, Save contact (.vcf), Share), with the two chairs from the card. Black and copper-gold with cream reading sections; the card is the link preview image | Built and tested |
 | Pages: Home, Our Work, Services, Shop, Fabrics, YouTube, About, FAQ & Process, Contact, Request a Quote, Policies, Admin, 404 | Built and tested |
 | **Photo-first quote form**: up to 10 photos from phone camera or library, previews, remove, per-photo upload status, retry without re-uploading, reference number only after the request is saved | Built and tested |
 | **Customer photos are private**: visitors can only add photos to a random folder; nobody but admins can list or open them (1-hour links) | Built and tested |
@@ -48,7 +48,8 @@ If the repository name is different, page addresses in the link previews and sit
 - **“Brasstack”** on the card: what it means and whether to feature brass-tack / nailhead trim as a service. Not featured yet.
 - Hours, service area, pickup/delivery, payment methods, returns (Admin → Settings).
 - The YouTube channel link and videos (Admin → Settings and Videos).
-- Real photos of finished work for Our Work, pieces for sale and fabrics. The chairs on the business cards are illustrations, not his work, so they aren’t used as project photos.
+- The two chairs on the card are shown as Charles’s work (per Charles). If one is award-winning, get the award name, giver and year before the site says so.
+- Real, unedited photos of finished work for Our Work, pieces for sale and fabrics.
 - Have the privacy notice and policies reviewed.
 
 ## Later
@@ -71,5 +72,7 @@ If the repository name is different, page addresses in the link previews and sit
 | `supabase.js` | Official Supabase client (bundled) |
 | `supabase/migrations/0001_charlies_chairs.sql` | Database, storage buckets and security rules |
 | `supabase/make-me-admin.sql` | Gives Charles’s login admin access |
-| `mark.svg`, `mark-dark.svg`, `favicon.svg`, `apple-touch-icon.png`, `og-image.jpg` | Brand files |
+| `card-chair-left.webp`, `card-chair-right.webp` | The two chairs from the business card |
+| `business-card.jpg` | The printed card (linked from the home page) |
+| `favicon.svg`, `apple-touch-icon.png`, `og-image.jpg` | Icons and link preview |
 | `sitemap.xml`, `robots.txt` | Search engines |
