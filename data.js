@@ -15,6 +15,13 @@ window.CC = {
   supabaseUrl: "",
   supabaseKey: "",
 
+  // The award-winning chair on the home page. Fill in "award" once Charles
+  // confirms it, e.g. "Best in Show, 2024 Michigan Upholstery Expo".
+  featured: {
+    label: "Award-Winning Piece",
+    award: ""
+  },
+
   // Fallback contact details, as printed on Charles's business card.
   fallback: {
     business_name: "Charlie’s Chairs",

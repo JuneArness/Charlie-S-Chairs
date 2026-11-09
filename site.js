@@ -278,6 +278,23 @@
     });
   }
 
+
+  /* ---------- featured award-winning chair: label + front/back turn ---------- */
+  (function () {
+    var F = C.featured || {};
+    if (F.label) $$("[data-award-label]").forEach(function (el) { el.textContent = F.label; });
+    $$("[data-award-detail]").forEach(function (el) { if (F.award) { el.textContent = F.award; el.hidden = false; } });
+    var sp = $("[data-showpiece]"); if (!sp) return;
+    var flip = $("[data-flip]", sp), btns = $$("[data-view]", sp);
+    function set(view) {
+      sp.classList.toggle("is-back", view === "back");
+      btns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-view") === view ? "true" : "false"); });
+      flip.setAttribute("aria-label", view === "back" ? "Turn the chair to see the front" : "Turn the chair to see the back");
+    }
+    flip.addEventListener("click", function () { set(sp.classList.contains("is-back") ? "front" : "back"); });
+    btns.forEach(function (b) { b.addEventListener("click", function () { set(b.getAttribute("data-view")); }); });
+    set("front");
+  })();
   /* ---------- digital business card: save contact + share ---------- */
   function cardActions(s) {
     var save = $("[data-save-contact]"), share = $("[data-share-card]"), st = $("[data-card-status]");

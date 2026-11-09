@@ -46,9 +46,8 @@
 <section class="card-hero" aria-labelledby="card-title">
   <div class="wrap">
     <div class="biz-card" id="biz-card">
-      <img class="biz-chair biz-chair-l" src="card-chair-left.webp" width="470" height="665" alt="Cognac leather club chair with black panels and brass nailhead trim, upholstered by Charles Parks">
       <div class="biz-center">
-        <h1 id="card-title" class="biz-word">Charlie’s Chairs</h1>
+        <h1 id="card-title" class="biz-word"><span>Charlie’s</span> <span>Chairs</span></h1>
         <hr class="biz-rule biz-r1">
         <p class="biz-tag">Upholstery/Fabric Sales<br>Brasstack</p>
         <hr class="biz-rule biz-r2">
@@ -56,7 +55,20 @@
         <hr class="biz-rule biz-r3">
         <p class="biz-addr"><span data-site="address-line">436 Northpark NE, Grand Rapids MI, 49525</span></p>
       </div>
-      <img class="biz-chair biz-chair-r" src="card-chair-right.webp" width="472" height="575" alt="Fan-back chair in black and red-orange patterned fabric with brass nailhead trim, upholstered by Charles Parks">
+      <figure class="showpiece" data-showpiece>
+        <p class="award-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.8 7 22l5-2.6 5 2.6-1.5-8.2"/><path d="M12 5.6l1 2.1 2.3.3-1.7 1.6.4 2.3-2-1.1-2 1.1.4-2.3-1.7-1.6 2.3-.3z" fill="#050403"/></svg><span data-award-label>Award-Winning Piece</span></p>
+        <button type="button" class="flip" data-flip aria-label="Turn the chair around to see the other side">
+          <span class="flip-inner">
+            <img class="flip-front" src="card-chair-left.webp" width="470" height="665" alt="Front view of Charles’s award-winning chair: cognac and black upholstery, scrolled arms and brass nailhead trim">
+            <img class="flip-back" src="card-chair-right.webp" width="472" height="575" alt="Back view of the same chair: fan-shaped back in black and red-orange patterned fabric, outlined in brass nailheads">
+          </span>
+        </button>
+        <div class="view-toggle" role="group" aria-label="Chair view">
+          <button type="button" data-view="front" aria-pressed="true">Front</button>
+          <button type="button" data-view="back" aria-pressed="false">Back</button>
+        </div>
+        <figcaption>Hand-upholstered by Charles Parks</figcaption>
+      </figure>
     </div>
     <div class="card-actions" aria-label="Card actions">
       <a class="card-act" data-phone-link href="tel:6166555225"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>Call</a>
@@ -70,10 +82,31 @@
       <p class="lead">Custom upholstery, furniture restoration and fabric sales, crafted with care by Charles Parks, with over 20 years of hands-on craftsmanship.</p>
       <div class="btn-row">
         <a class="btn btn-gold" href="quote.html">Send Photos for a Quote</a>
-        <a class="btn btn-line" href="work.html">Explore Our Work</a>
+        <a class="btn btn-line" href="#award-piece">See the Award-Winning Chair</a>
       </div>
       <p class="small muted"><a href="business-card.jpg" target="_blank" rel="noopener">View the printed business card</a> <span data-visit-note>· Please call or email before visiting.</span></p>
     </div>
+  </div>
+</section>
+
+<section class="showcase" id="award-piece" aria-labelledby="award-title">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center">
+      <p class="eyebrow" data-award-label>Award-Winning Piece</p>
+      <h2 id="award-title">Finished front to back</h2>
+      <p class="lead" style="margin:0 auto">One of Charles’s award-winning pieces, and the chair on his business card.</p>
+      <p class="award-detail" data-award-detail hidden></p>
+    </div>
+    <div class="showcase-views">
+      <figure><img src="card-chair-left.webp" width="470" height="665" alt="Front view: cognac and black upholstery, scrolled arms and brass nailhead trim" loading="lazy"><figcaption>Front</figcaption></figure>
+      <figure><img src="card-chair-right.webp" width="472" height="575" alt="Back view: fan-shaped back in black and red-orange patterned fabric, outlined in brass nailheads" loading="lazy"><figcaption>Back</figcaption></figure>
+    </div>
+    <ul class="showcase-notes">
+      <li><strong>Cognac and black</strong><span>Bold panels run up the back and across the seat.</span></li>
+      <li><strong>Brass nailhead trim</strong><span>Lining the arms, the base and the back.</span></li>
+      <li><strong>A back worth seeing</strong><span>A fan-shaped panel in black and red-orange patterned fabric.</span></li>
+    </ul>
+    <div class="btn-row" style="justify-content:center;margin-top:30px"><a class="btn btn-gold" href="quote.html">Talk to Charles about your piece</a><a class="btn btn-line" href="work.html">See more work</a></div>
   </div>
 </section>
 
