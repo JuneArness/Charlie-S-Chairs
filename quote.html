@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Quote | Send Photos of Your Furniture | Charlie’s Chairs</title>
+<meta name="description" content="Send photos of your chair, sofa or other piece and tell Charles what you’d like done. He reviews every request personally.">
+<meta name="theme-color" content="#0d0b09">
+<link rel="canonical" href="https://junearness.github.io/charlies-chairs/quote.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Charlie’s Chairs">
+<meta property="og:title" content="Request a Quote | Send Photos of Your Furniture | Charlie’s Chairs">
+<meta property="og:description" content="Send photos of your chair, sofa or other piece and tell Charles what you’d like done. He reviews every request personally.">
+<meta property="og:url" content="https://junearness.github.io/charlies-chairs/quote.html">
+<meta property="og:image" content="https://junearness.github.io/charlies-chairs/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="utility"><div class="wrap">
+  <span class="lead-text">Upholstery · Restoration · Custom builds · Fabric sales</span>
+  <a data-phone-link data-show href="tel:6166555225">616-655-5225</a>
+  <a class="u-email" data-email-link data-show href="mailto:parkscharles838@gmail.com">parkscharles838@gmail.com</a>
+  <a href="quote.html">Send photos for a quote</a>
+</div></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="mark.svg" alt="" width="46" height="46">
+      <span class="brand-name">Charlie’s Chairs<small>Upholstery &amp; Fabric</small></span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="index.html">Home</a><a href="work.html">Our Work</a><a href="services.html">Services</a><a href="shop.html">Shop</a><a href="fabrics.html">Fabrics</a><a href="videos.html">YouTube</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <a class="btn btn-gold" href="quote.html" aria-current="page">Request a Quote</a>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-hero"><div class="wrap"><p class="crumbs"><a href="index.html">Home</a> / Request a Quote</p>
+  <p class="eyebrow">Request a quote</p><h1 id="quote-title">Send photos of your piece</h1>
+  <p class="lead">Tell Charles about the piece and what you’d like done. He reviews every request personally and will contact you. This isn’t an automatic quote.</p>
+</div></section>
+<section class="light"><div class="wrap" style="max-width:920px">
+  <p class="asking" id="asking" hidden></p>
+  <form class="form" id="quote-form" novalidate style="margin-top:20px">
+    <div class="hp" aria-hidden="true"><label for="q-web">Leave empty</label><input type="text" id="q-web" tabindex="-1" autocomplete="off"></div>
+
+    <fieldset class="group"><legend>Your details</legend>
+      <div class="row">
+        <div class="field"><label for="q-first">First name</label><input type="text" id="q-first" autocomplete="given-name" required maxlength="60"><p class="err">Please enter your first name.</p></div>
+        <div class="field"><label for="q-last">Last name</label><input type="text" id="q-last" autocomplete="family-name" maxlength="60"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="q-email">Email</label><input type="email" id="q-email" autocomplete="email" required maxlength="160"><p class="err">Please enter a valid email address.</p></div>
+        <div class="field"><label for="q-phone">Phone <span class="opt">(needed for calls or texts)</span></label><input type="tel" id="q-phone" autocomplete="tel" maxlength="30"><p class="err">Please enter a phone number with area code.</p></div>
+      </div>
+      <div class="field"><fieldset style="border:0;padding:0;margin:0"><legend class="label">Best way to reach you</legend><div class="choice">
+        <label><input type="radio" name="contact_method" value="email" checked> Email</label>
+        <label><input type="radio" name="contact_method" value="phone"> Phone call</label>
+        <label><input type="radio" name="contact_method" value="text"> Text</label></div></fieldset></div>
+    </fieldset>
+
+    <fieldset class="group" data-project-only><legend>Photos of your piece</legend>
+      <p class="muted" style="margin:0">Helpful photos: <strong>one of the whole piece</strong>, a side view, <strong>close-ups of worn or damaged areas</strong>, and any fabric or style you love. Up to 10 photos (JPG, PNG or WebP). Your photos are private: they’re only used to review your request and are never posted.</p>
+      <div class="drop" id="drop">
+        <label class="btn btn-dark" for="q-photos">Choose or take photos</label>
+        <input type="file" id="q-photos" accept="image/jpeg,image/png,image/webp" multiple>
+        <p class="small muted" style="margin:6px 0 0">On a computer you can also drag photos here.</p>
+      </div>
+      <p class="small" id="photo-count" aria-live="polite"></p>
+      <p class="small" id="photo-msg" role="alert" hidden style="color:#a3261b"></p>
+      <ul class="thumbs-grid" id="photo-list" aria-label="Selected photos"></ul>
+      <div class="progress" id="upload-progress" hidden><span></span></div>
+    </fieldset>
+
+    <fieldset class="group"><legend>About the project</legend>
+      <div class="row" data-project-only>
+        <div class="field"><label for="q-project">Type of work</label><select id="q-project" required></select><p class="err">Please choose the type of work.</p></div>
+        <div class="field"><label for="q-furniture">Type of furniture</label><select id="q-furniture" required></select><p class="err">Please choose the type of furniture.</p></div>
+        <div class="field"><label for="q-pieces">Number of pieces</label><input type="text" inputmode="numeric" id="q-pieces" value="1" pattern="[0-9]{1,3}" maxlength="3"><p class="err">Enter a number.</p></div>
+      </div>
+      <div class="field" id="qty-field" hidden><label for="q-qty">How much? <span class="opt">(e.g. 6 yards, or a swatch)</span></label><input type="text" id="q-qty" maxlength="60"></div>
+      <div class="field"><label for="q-desc" id="q-desc-label">Describe the piece and the work you’d like</label><textarea id="q-desc" required maxlength="3000" placeholder="For example: Wingback chair from my grandmother. I’d like it reupholstered in a darker fabric."></textarea><p class="err">Please describe the piece and the work you’d like.</p></div>
+      <div data-project-only>
+        <div class="field"><label for="q-condition">Current condition or damage <span class="opt">(optional)</span></label><textarea id="q-condition" maxlength="2000" rows="3"></textarea></div>
+        <div class="field" style="margin-top:20px"><label for="q-style">Fabric, color or style you have in mind <span class="opt">(optional)</span></label><input type="text" id="q-style" maxlength="1000"></div>
+        <div class="row" style="margin-top:20px">
+          <div class="field"><label for="q-dims">Approximate size <span class="opt">(optional)</span></label><input type="text" id="q-dims" maxlength="300" placeholder="e.g. 32 in wide, 40 in tall"></div>
+          <div class="field"><label for="q-budget">Budget range <span class="opt">(optional)</span></label><select id="q-budget"></select></div>
+          <div class="field"><label for="q-timing">Preferred timing <span class="opt">(optional)</span></label><input type="text" id="q-timing" maxlength="200" placeholder="e.g. before the holidays"></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="field"><label class="check"><input type="checkbox" id="q-consent" required> I agree to be contacted about this request and to the <a href="policies.html#privacy">privacy notice</a>.</label><p class="err">Please check this box so Charles can reply.</p></div>
+    <div><button class="btn btn-gold" type="submit">Send my request</button></div>
+    <div class="status" id="quote-status" role="status" tabindex="-1"></div>
+  </form>
+  <div class="card done-card" id="quote-done" hidden tabindex="-1">
+    <img src="mark-dark.svg" alt="" style="width:72px;margin:0 auto 10px">
+    <h2>Request received</h2>
+    <p>Your reference number:</p>
+    <p class="ref" data-ref></p>
+    <p><span data-photos></span>Charles will review your request and contact you. Keep your reference number in case you call.</p>
+    <div class="btn-row" style="justify-content:center"><a class="btn btn-dark" href="work.html">Explore our work</a><a class="btn btn-line" href="index.html">Back to home</a></div>
+  </div>
+</div></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="mark.svg" alt="" width="58" height="58">
+        <p><strong>Charlie’s Chairs</strong><br><span class="muted">Custom upholstery, restoration and fabric sales by Charles Parks. Over 20 years of handcraftsmanship.</span></p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="work.html">Our Work</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="shop.html">Pieces for Sale</a></li>
+          <li><a href="fabrics.html">Fabrics</a></li>
+          <li><a href="faq.html">FAQ &amp; Process</a></li>
+          <li><a href="videos.html">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a data-phone-link data-show href="tel:6166555225">616-655-5225</a></li>
+          <li><a data-email-link data-show href="mailto:parkscharles838@gmail.com">parkscharles838@gmail.com</a></li>
+          <li data-site="address">436 Northpark NE<br>Grand Rapids, MI 49525</li>
+          <li><a href="quote.html">Request a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal"><span>© <span data-year>2026</span> Charlie’s Chairs · <a href="policies.html">Privacy &amp; policies</a></span><span data-credit>Website by SAP Development Solutions, LLC</span></div>
+  </div>
+</footer>
+<script src="data.js"></script>
+<script src="supabase.js"></script>
+<script src="api.js"></script>
+<script src="site.js"></script>
+<script src="quote.js"></script>
+</body>
+</html>
